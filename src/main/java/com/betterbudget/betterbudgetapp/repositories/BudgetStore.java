@@ -1,13 +1,13 @@
-package com.betterbudget.betterbudgetapp.stores;
+package com.betterbudget.betterbudgetapp.repositories;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.betterbudget.betterbudgetapp.models.account.Account;
-import com.betterbudget.betterbudgetapp.models.budget.Budget;
-import com.betterbudget.betterbudgetapp.models.budget.BudgetItem;
-import com.betterbudget.betterbudgetapp.models.request.CreateBudgetRequest;
-import com.betterbudget.betterbudgetapp.models.transaction.Transaction;
+import com.betterbudget.betterbudgetapp.models.Account;
+import com.betterbudget.betterbudgetapp.models.Budget;
+import com.betterbudget.betterbudgetapp.models.BudgetItem;
+import com.betterbudget.betterbudgetapp.models.CreateBudgetRequest;
+import com.betterbudget.betterbudgetapp.models.Transaction;
 
 public class BudgetStore {
 	private HashMap<String, Budget> budgets = new HashMap<>();

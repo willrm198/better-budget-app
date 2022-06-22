@@ -1,12 +1,7 @@
-package com.betterbudget.betterbudgetapp.models.respons;
+package com.betterbudget.betterbudgetapp.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.betterbudget.betterbudgetapp.models.account.Account;
-import com.betterbudget.betterbudgetapp.models.budget.Budget;
-import com.betterbudget.betterbudgetapp.models.budget.BudgetItem;
-import com.betterbudget.betterbudgetapp.models.transaction.Transaction;
 
 public class BudgetResponse {
 

@@ -1,13 +1,9 @@
-package com.betterbudget.betterbudgetapp.models.request;
+package com.betterbudget.betterbudgetapp.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.betterbudget.betterbudgetapp.models.account.Account;
-import com.betterbudget.betterbudgetapp.models.budget.Budget;
-import com.betterbudget.betterbudgetapp.models.budget.BudgetItem;
 
 public class CreateBudgetRequest {
 
