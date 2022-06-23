@@ -7,7 +7,7 @@ public class BudgetResponse {
 
 	private Budget budget;
 
-	private List<BudgetItem> items = new ArrayList<>();
+	private List<Expense> items = new ArrayList<>();
 	private List<Account> accounts = new ArrayList<>();
 	private List<Transaction> transactions = new ArrayList<>();
 
@@ -23,11 +23,11 @@ public class BudgetResponse {
 		this.budget = budget;
 	}
 
-	public List<BudgetItem> getItems() {
+	public List<Expense> getItems() {
 		return items;
 	}
 
-	public void setItems(List<BudgetItem> items) {
+	public void setItems(List<Expense> items) {
 		this.items = items;
 	}
 

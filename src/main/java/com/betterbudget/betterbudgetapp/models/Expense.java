@@ -15,8 +15,8 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 @Entity
-@Table(name = "budget_item")
-public class BudgetItem {
+@Table(name = "expense")
+public class Expense {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class BudgetItem {
 	private LocalDate dueDate;
 	private Double amount;
 
-	public BudgetItem() {
+	public Expense() {
 
 	}
 

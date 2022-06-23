@@ -5,14 +5,14 @@ import java.util.List;
 
 import com.betterbudget.betterbudgetapp.models.Account;
 import com.betterbudget.betterbudgetapp.models.Budget;
-import com.betterbudget.betterbudgetapp.models.BudgetItem;
 import com.betterbudget.betterbudgetapp.models.CreateBudgetRequest;
+import com.betterbudget.betterbudgetapp.models.Expense;
 import com.betterbudget.betterbudgetapp.models.Transaction;
 
 public class BudgetStore {
 	private HashMap<String, Budget> budgets = new HashMap<>();
 	private HashMap<String, Account> accounts = new HashMap<>();
-	private HashMap<String, BudgetItem> items = new HashMap<>();
+	private HashMap<String, Expense> items = new HashMap<>();
 	private HashMap<String, Transaction> transactions = new HashMap<>();
 
 	public static BudgetStore getBudgetStore() {
@@ -25,8 +25,8 @@ public class BudgetStore {
 		if (!request.getAccounts().isEmpty()) {
 			addAccounts(request.getAccounts());
 		}
-		if (!request.getItems().isEmpty()) {
-			addItems(request.getItems());
+		if (!request.getExpenses().isEmpty()) {
+			addItems(request.getExpenses());
 		}
 	}
 
@@ -48,16 +48,16 @@ public class BudgetStore {
 		return accounts.get(id);
 	}
 
-	public void addBudgetItem(BudgetItem item) {
+	public void addBudgetItem(Expense item) {
 		items.put(String.valueOf(item.getId()), item);
 	}
 
-	public BudgetItem getBudgetItem(String id) {
+	public Expense getBudgetItem(String id) {
 		return items.get(id);
 	}
 
-	public void addItems(List<BudgetItem> items) {
-		for (BudgetItem item : items) {
+	public void addItems(List<Expense> items) {
+		for (Expense item : items) {
 			this.items.put(String.valueOf(item.getId()), item);
 		}
 	}

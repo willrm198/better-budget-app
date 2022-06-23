@@ -8,12 +8,12 @@ import org.springframework.util.CollectionUtils;
 
 import com.betterbudget.betterbudgetapp.models.Account;
 import com.betterbudget.betterbudgetapp.models.Budget;
-import com.betterbudget.betterbudgetapp.models.BudgetItem;
 import com.betterbudget.betterbudgetapp.models.CreateBudgetRequest;
+import com.betterbudget.betterbudgetapp.models.Expense;
 import com.betterbudget.betterbudgetapp.models.Transaction;
 import com.betterbudget.betterbudgetapp.repositories.AccountRepository;
-import com.betterbudget.betterbudgetapp.repositories.BudgetItemRepository;
 import com.betterbudget.betterbudgetapp.repositories.BudgetRepository;
+import com.betterbudget.betterbudgetapp.repositories.ExpenseRepository;
 import com.betterbudget.betterbudgetapp.repositories.TransactionRepository;
 
 @Service
@@ -26,7 +26,7 @@ public class BudgetService {
 	private AccountRepository accountRepo;
 
 	@Autowired
-	private BudgetItemRepository budgetItemRepo;
+	private ExpenseRepository expenseRepo;
 
 	@Autowired
 	private TransactionRepository transactionRepo;
@@ -37,8 +37,8 @@ public class BudgetService {
 			saveAccounts(request.getAccounts());
 		}
 
-		if (!CollectionUtils.isEmpty(request.getItems())) {
-			saveBudgetItems(request.getItems());
+		if (!CollectionUtils.isEmpty(request.getExpenses())) {
+			saveExpenses(request.getExpenses());
 		}
 
 		return "Budget created!";
@@ -109,37 +109,37 @@ public class BudgetService {
 		return accountRepo.save(prevAccount);
 	}
 
-	public BudgetItem saveBudgetItem(BudgetItem budgetItem) {
-		return budgetItemRepo.save(budgetItem);
+	public Expense saveExpense(Expense expense) {
+		return expenseRepo.save(expense);
 	}
 
-	public List<BudgetItem> saveBudgetItems(List<BudgetItem> items) {
-		return budgetItemRepo.saveAll(items);
+	public List<Expense> saveExpenses(List<Expense> expenses) {
+		return expenseRepo.saveAll(expenses);
 	}
 
-	public List<BudgetItem> getBudgetItems() {
-		return budgetItemRepo.findAll();
+	public List<Expense> getExpenses() {
+		return expenseRepo.findAll();
 	}
 
-	public BudgetItem getBudgetItemById(int id) {
-		return budgetItemRepo.findById(id).orElse(null);
+	public Expense getExpenseById(int id) {
+		return expenseRepo.findById(id).orElse(null);
 	}
 
-	public List<BudgetItem> getBudgetItemByBudgetId(int id) {
-		return budgetItemRepo.findByBudgetId(id);
+	public List<Expense> getExpenseByBudgetId(int id) {
+		return expenseRepo.findByBudgetId(id);
 	}
 
-	public String deleteBudgetItem(int id) {
-		budgetItemRepo.deleteById(id);
-		return "Account deleted!";
+	public String deleteExpense(int id) {
+		expenseRepo.deleteById(id);
+		return "Expense deleted!";
 	}
 
-	public BudgetItem updateBudgetItem(BudgetItem item) {
-		BudgetItem prevItem = budgetItemRepo.findById(item.getId()).orElse(null);
-		prevItem.setAmount(item.getAmount());
-		prevItem.setDueDate(item.getDueDate());
-		prevItem.setName(item.getName());
-		return budgetItemRepo.save(prevItem);
+	public Expense updateBudgetItem(Expense expense) {
+		Expense prevExpense = expenseRepo.findById(expense.getId()).orElse(null);
+		prevExpense.setAmount(expense.getAmount());
+		prevExpense.setDueDate(expense.getDueDate());
+		prevExpense.setName(expense.getName());
+		return expenseRepo.save(prevExpense);
 	}
 
 	public Transaction saveTransaction(Transaction budgetItem) {
