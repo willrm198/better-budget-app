@@ -12,6 +12,7 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private int budgetId;
 	private String name;
 	private Double limitAmount;
 	private Double balance;
@@ -27,6 +28,14 @@ public class Account {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getBudgetId() {
+		return budgetId;
+	}
+
+	public void setBudgetId(int budgetId) {
+		this.budgetId = budgetId;
 	}
 
 	public String getName() {

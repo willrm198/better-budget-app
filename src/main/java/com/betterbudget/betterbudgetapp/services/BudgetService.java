@@ -8,6 +8,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.betterbudget.betterbudgetapp.models.Account;
 import com.betterbudget.betterbudgetapp.models.Budget;
+import com.betterbudget.betterbudgetapp.models.BudgetResponse;
 import com.betterbudget.betterbudgetapp.models.CreateBudgetRequest;
 import com.betterbudget.betterbudgetapp.models.Expense;
 import com.betterbudget.betterbudgetapp.models.Transaction;
@@ -52,6 +53,19 @@ public class BudgetService {
 		return budgetRepo.findAll();
 	}
 
+	public BudgetResponse getFullBudget(int id) {
+		Budget budget = getBudgetById(id);
+		List<Expense> expenses = getExpenseByBudgetId(id);
+		List<Account> accounts = getAccountsByBudgetId(id);
+		List<Transaction> transactions = getTransactionsByBudgetId(id);
+		BudgetResponse response = new BudgetResponse();
+		response.setBudget(budget);
+		response.setExpenses(expenses);
+		response.setAccounts(accounts);
+		response.setTransactions(transactions);
+		return response;
+	}
+
 	public Budget getBudgetById(int id) {
 		return budgetRepo.findById(id).orElse(null);
 	}
@@ -89,6 +103,10 @@ public class BudgetService {
 
 	public Account getAccountById(int id) {
 		return accountRepo.findById(id).orElse(null);
+	}
+
+	public List<Account> getAccountsByBudgetId(int id) {
+		return accountRepo.findByBudgetId(id);
 	}
 
 	public List<Account> getAccountByType(String type) {
@@ -134,7 +152,7 @@ public class BudgetService {
 		return "Expense deleted!";
 	}
 
-	public Expense updateBudgetItem(Expense expense) {
+	public Expense updateExpense(Expense expense) {
 		Expense prevExpense = expenseRepo.findById(expense.getId()).orElse(null);
 		prevExpense.setAmount(expense.getAmount());
 		prevExpense.setDueDate(expense.getDueDate());
@@ -142,8 +160,8 @@ public class BudgetService {
 		return expenseRepo.save(prevExpense);
 	}
 
-	public Transaction saveTransaction(Transaction budgetItem) {
-		return transactionRepo.save(budgetItem);
+	public Transaction saveTransaction(Transaction transaction) {
+		return transactionRepo.save(transaction);
 	}
 
 	public List<Transaction> getTransactions() {
@@ -154,7 +172,7 @@ public class BudgetService {
 		return transactionRepo.findById(id).orElse(null);
 	}
 
-	public List<Transaction> getTransactionByBudgetId(int id) {
+	public List<Transaction> getTransactionsByBudgetId(int id) {
 		return transactionRepo.findByBudgetId(id);
 	}
 

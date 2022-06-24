@@ -10,4 +10,6 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
 	List<Account> findByAccountType(String type);
 
+	List<Account> findByBudgetId(int id);
+
 }

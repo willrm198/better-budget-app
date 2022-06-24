@@ -6,8 +6,7 @@ import java.util.List;
 public class BudgetResponse {
 
 	private Budget budget;
-
-	private List<Expense> items = new ArrayList<>();
+	private List<Expense> expenses = new ArrayList<>();
 	private List<Account> accounts = new ArrayList<>();
 	private List<Transaction> transactions = new ArrayList<>();
 
@@ -23,12 +22,12 @@ public class BudgetResponse {
 		this.budget = budget;
 	}
 
-	public List<Expense> getItems() {
-		return items;
+	public List<Expense> getExpenses() {
+		return expenses;
 	}
 
-	public void setItems(List<Expense> items) {
-		this.items = items;
+	public void setExpenses(List<Expense> expenses) {
+		this.expenses = expenses;
 	}
 
 	public List<Account> getAccounts() {
