@@ -1,55 +1,59 @@
-package com.betterbudget.betterbudgetapp.models.transaction;
+package com.betterbudget.betterbudgetapp.models;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import com.betterbudget.betterbudgetapp.models.account.Account;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+@Entity
+@Table(name = "transaction")
 public class Transaction {
 
-	private long id;
-	private long budgetId;
-	private Account account;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private int budgetId;
+	private String accountName;
 	private Double amount;
 	private TransactionCategory category;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
-	private LocalDate date;
+	private LocalDate transactionDate;
 	private String description;
-	private TransactionType type;
+	private TransactionType transactionType;
 
-	@Autowired
 	public Transaction() {
-		int min = 0;
-		int max = 999999999;
-		this.id = (long) Math.floor(Math.random() * (max - min + 1) + min);
+
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public long getBudgetId() {
+	public int getBudgetId() {
 		return budgetId;
 	}
 
-	public void setBudgetId(long budgetId) {
+	public void setBudgetId(int budgetId) {
 		this.budgetId = budgetId;
 	}
 
-	public Account getAccount() {
-		return account;
+	public String getAccountName() {
+		return accountName;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	public Double getAmount() {
@@ -68,12 +72,12 @@ public class Transaction {
 		this.category = category;
 	}
 
-	public LocalDate getDate() {
-		return date;
+	public LocalDate getTransactionDate() {
+		return transactionDate;
 	}
 
-	public void setDate(LocalDate date) {
-		this.date = date;
+	public void setTransactionDate(LocalDate transactionDate) {
+		this.transactionDate = transactionDate;
 	}
 
 	public String getDescription() {
@@ -84,12 +88,12 @@ public class Transaction {
 		this.description = description;
 	}
 
-	public TransactionType getType() {
-		return type;
+	public TransactionType getTransactionType() {
+		return transactionType;
 	}
 
-	public void setType(TransactionType type) {
-		this.type = type;
+	public void setTransactionType(TransactionType transactionType) {
+		this.transactionType = transactionType;
 	}
 
 }

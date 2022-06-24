@@ -1,0 +1,3 @@
+ALTER TABLE account 
+ADD COLUMN budget_id BIGINT AFTER id,
+ADD FOREIGN KEY (budget_id) REFERENCES budget(id) ON DELETE CASCADE;

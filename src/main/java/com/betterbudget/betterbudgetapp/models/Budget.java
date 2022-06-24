@@ -1,8 +1,12 @@
-package com.betterbudget.betterbudgetapp.models.budget;
+package com.betterbudget.betterbudgetapp.models;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -10,9 +14,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+@Entity
+@Table(name = "budget")
 public class Budget {
 
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
@@ -21,20 +29,17 @@ public class Budget {
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate endDate;
-	private BudgetType type;
+	private BudgetType budgetType;
 
-	@Autowired
 	public Budget() {
-		int min = 0;
-		int max = 999999999;
-		this.id = (long) Math.floor(Math.random() * (max - min + 1) + min);
+
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -54,12 +59,12 @@ public class Budget {
 		this.endDate = endDate;
 	}
 
-	public BudgetType getType() {
-		return type;
+	public BudgetType getBudgetType() {
+		return budgetType;
 	}
 
-	public void setType(BudgetType type) {
-		this.type = type;
+	public void setBudgetType(BudgetType budgetType) {
+		this.budgetType = budgetType;
 	}
 
 }

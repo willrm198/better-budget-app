@@ -1,18 +1,14 @@
-package com.betterbudget.betterbudgetapp.models.request;
+package com.betterbudget.betterbudgetapp.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.betterbudget.betterbudgetapp.models.account.Account;
-import com.betterbudget.betterbudgetapp.models.budget.Budget;
-import com.betterbudget.betterbudgetapp.models.budget.BudgetItem;
-
 public class CreateBudgetRequest {
 
 	private Budget budget;
-	private List<BudgetItem> items = new ArrayList<>();
+	private List<Expense> expenses = new ArrayList<>();
 	private List<Account> accounts = new ArrayList<>();
 
 	public CreateBudgetRequest() {
@@ -32,12 +28,12 @@ public class CreateBudgetRequest {
 		this.budget = budget;
 	}
 
-	public List<BudgetItem> getItems() {
-		return items;
+	public List<Expense> getExpenses() {
+		return expenses;
 	}
 
-	public void setItems(List<BudgetItem> items) {
-		this.items = items;
+	public void setExpenses(List<Expense> expenses) {
+		this.expenses = expenses;
 	}
 
 	public List<Account> getAccounts() {
