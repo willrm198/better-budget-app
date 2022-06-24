@@ -3,10 +3,15 @@ package com.betterbudget.betterbudgetapp.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CreateBudgetRequest {
 
+	@NotNull(message = "Request must include a budget.")
+	@Valid
 	private Budget budget;
 	private List<Expense> expenses = new ArrayList<>();
 	private List<Account> accounts = new ArrayList<>();
