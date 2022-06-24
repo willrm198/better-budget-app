@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -21,15 +22,19 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "Related budget id is required.")
 	private int budgetId;
 	private String accountName;
+	@NotNull(message = "Transaction amount is required.")
 	private Double amount;
 	private TransactionCategory category;
 	@JsonFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "Transaction date is required.")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate transactionDate;
 	private String description;
+	@NotNull(message = "Transaction account is required.")
 	private TransactionType transactionType;
 
 	public Transaction() {

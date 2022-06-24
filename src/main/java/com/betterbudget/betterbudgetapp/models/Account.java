@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "account")
@@ -12,10 +14,13 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "Related budget id is required.")
 	private int budgetId;
+	@NotBlank(message = "Name is required.")
 	private String name;
 	private Double limitAmount;
 	private Double balance;
+	@NotNull(message = "Account type is required.")
 	private AccountType accountType;
 
 	public Account() {
