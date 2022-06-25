@@ -1,14 +1,13 @@
 package com.betterbudget.betterbudgetapp.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BudgetResponse {
+public class BudgetResponse extends GenericResponse {
 
 	private Budget budget;
-	private List<Expense> expenses = new ArrayList<>();
-	private List<Account> accounts = new ArrayList<>();
-	private List<Transaction> transactions = new ArrayList<>();
+	private List<Expense> expenses;
+	private List<Account> accounts;
+	private List<Transaction> transactions;
 
 	public BudgetResponse() {
 

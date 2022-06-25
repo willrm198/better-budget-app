@@ -45,8 +45,9 @@ public class BudgetService {
 		return "Budget created!";
 	}
 
-	public Budget saveBudget(Budget budget) {
-		return budgetRepo.save(budget);
+	public String saveBudget(Budget budget) {
+		budgetRepo.save(budget);
+		return "Budget saved!";
 	}
 
 	public List<Budget> getBudgets() {
@@ -89,8 +90,9 @@ public class BudgetService {
 		return budgetRepo.save(prevBudget);
 	}
 
-	public Account saveAccount(Account account) {
-		return accountRepo.save(account);
+	public String saveAccount(Account account) {
+		accountRepo.save(account);
+		return "Account saved!";
 	}
 
 	public List<Account> saveAccounts(List<Account> accounts) {
@@ -127,8 +129,9 @@ public class BudgetService {
 		return accountRepo.save(prevAccount);
 	}
 
-	public Expense saveExpense(Expense expense) {
-		return expenseRepo.save(expense);
+	public String saveExpense(Expense expense) {
+		expenseRepo.save(expense);
+		return "Expense saved!";
 	}
 
 	public List<Expense> saveExpenses(List<Expense> expenses) {
@@ -160,8 +163,9 @@ public class BudgetService {
 		return expenseRepo.save(prevExpense);
 	}
 
-	public Transaction saveTransaction(Transaction transaction) {
-		return transactionRepo.save(transaction);
+	public String saveTransaction(Transaction transaction) {
+		transactionRepo.save(transaction);
+		return "Transaction saved!";
 	}
 
 	public List<Transaction> getTransactions() {
